@@ -38,9 +38,6 @@
 export default {
   data() {
     return {
-      isError: false,
-      showError: false,
-      isDisabled: true,
       email: "",
       password: "",
       errorMsg: [],
@@ -67,12 +64,11 @@ export default {
       }
       if (this.errorMsg.length === 0) {
         console.log(this.email, this.password);
+        this.resetData();
       }
       e.preventDefault();
     },
     resetData() {
-      this.isError = false;
-      this.isDisabled = false;
       this.email = "";
       this.password = "";
       this.errorMsg = "";
