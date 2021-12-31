@@ -10,8 +10,8 @@ Vue.use(vueRouter);
 Vue.config.productionTip = false;
 
 const routes = [
-  { path: "/", component: Login },
-  { path: "/Home", component: Home }
+  { name: "Login", path: "/Login", component: Login },
+  { name: "Home", path: "/", component: Home }
 ];
 
 const router = new vueRouter({

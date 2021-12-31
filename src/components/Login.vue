@@ -3,7 +3,7 @@
     <h1>Login</h1>
     <form class="login-form" @submit.prevent="submit">
       <p v-if="this.errorMsg.length > 0" class="error">
-        ERROR!! {{ this.errorMsg[0] }}*
+        ERROR!! {{ this.errorMsg[0] }}
       </p>
 
       <div class="email-input">
@@ -14,7 +14,6 @@
           v-model="email"
           placeholder="Type your ID"
           required="true"
-          @blur="$v.email.$touch()"
         />
       </div>
       <div class="password-input">
@@ -25,7 +24,6 @@
           v-model="password"
           placeholder="Type your Password"
           required="true"
-          @blur="$v.email.$touch()"
         />
       </div>
       <div class="login-button">
@@ -70,6 +68,7 @@ export default {
       }
       if (this.errorMsg.length === 0) {
         console.log(this.email, this.password);
+        this.$router.push({ name: "Home" });
         this.resetData();
       }
       e.preventDefault();
@@ -118,11 +117,10 @@ body {
   width: 500px;
   height: 500px;
   position: absolute;
-  top: 50px;
+  top: 100px;
   left: 35%;
 }
 .login-form {
-  position: relative;
   padding: 20px 40px;
 }
 

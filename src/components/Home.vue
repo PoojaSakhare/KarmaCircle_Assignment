@@ -1,13 +1,5 @@
 <template>
-  <header>
-    <nav>
-      <span>HOME</span>
-      <div>
-        <span> PROFILE </span>
-        <span> LOGOUT </span>
-      </div>
-    </nav>
-  </header>
+  <h1>hello</h1>
 </template>
 
 <script>
