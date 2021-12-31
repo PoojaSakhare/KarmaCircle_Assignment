@@ -2,8 +2,9 @@
   <div class="login">
     <h1>Login</h1>
     <form class="login-form">
-      <p v-if="isError" class="error">Error: {{ this.errorMsg }}*</p>
-
+      <p v-if="this.errorMsg.length > 0" class="error">
+        Error: {{ this.errorMsg[0] }}*
+      </p>
       <div class="email-input">
         <label for="Email"> Email</label>
         <input
@@ -12,7 +13,6 @@
           v-model="email"
           placeholder="Type your ID"
           required="true"
-          v-on:change="validate"
         />
       </div>
       <div class="password-input">
@@ -23,11 +23,10 @@
           v-model="password"
           placeholder="Type your Password"
           required="true"
-          @change="validate"
         />
       </div>
       <div class="login-button">
-        <button :disabled="isDisabled" id="Login_Button" type="Submit">
+        <button id="Login_Button" type="Submit" @click="validate($event)">
           Login
         </button>
       </div>
@@ -40,28 +39,36 @@ export default {
   data() {
     return {
       isError: false,
+      showError: false,
       isDisabled: true,
       email: "",
       password: "",
-      errorMsg: "",
+      errorMsg: [],
     };
   },
   methods: {
-    validate() {
-      console.log("triggered");
+    validate(e) {
+      this.errorMsg = [];
       if (this.email === "" || this.password === "") {
-        this.isError = true;
-        this.errorMsg = "Please fill all datas";
+        this.errorMsg.push("Please fill all datas");
       }
-      var pattern = new RegExp(
+      var patternPassword = new RegExp(
         /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$/
       );
-      if (!pattern.test("!@#123asdf!@#") && this.email && this.password) {
-        this.isError = true;
-        this.errorMsg =
-          "Passwords should have a check for at least one uppercase letter, numbers and a special character";
+      var patternEmail = /^\w+@\w+\.\w{2,3}$/;
+
+      if (!patternEmail.test(this.email) && this.email && this.password) {
+        this.errorMsg.push("Incorrect Email");
       }
-      if (!this.isError) this.isDisabled = false;
+      if (!patternPassword.test(this.password) && this.email && this.password) {
+        this.errorMsg.push(
+          "Passwords should have at least one uppercase letter, numbers and a special character"
+        );
+      }
+      if (this.errorMsg.length === 0) {
+        console.log(this.email, this.password);
+      }
+      e.preventDefault();
     },
     resetData() {
       this.isError = false;
@@ -71,6 +78,7 @@ export default {
       this.errorMsg = "";
     },
   },
+  watch: {},
 };
 </script>
 
