@@ -1,10 +1,11 @@
 <template>
   <div class="login">
     <h1>Login</h1>
-    <form class="login-form">
+    <form class="login-form" @submit.prevent="submit">
       <p v-if="this.errorMsg.length > 0" class="error">
-        Error: {{ this.errorMsg[0] }}*
+        ERROR!! {{ this.errorMsg[0] }}*
       </p>
+
       <div class="email-input">
         <label for="Email"> Email</label>
         <input
@@ -13,6 +14,7 @@
           v-model="email"
           placeholder="Type your ID"
           required="true"
+          @blur="$v.email.$touch()"
         />
       </div>
       <div class="password-input">
@@ -23,6 +25,7 @@
           v-model="password"
           placeholder="Type your Password"
           required="true"
+          @blur="$v.email.$touch()"
         />
       </div>
       <div class="login-button">
@@ -35,12 +38,14 @@
 </template>
 
 <script>
+import { required, email, minLength } from "vuelidate/lib/validators";
 export default {
   data() {
     return {
       email: "",
       password: "",
       errorMsg: [],
+      submitted: false,
     };
   },
   methods: {
@@ -73,8 +78,31 @@ export default {
       this.password = "";
       this.errorMsg = "";
     },
+    submit() {
+      this.submitted = true;
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return false; // stop here if form is invalid
+      } else {
+        alert("Form Valid");
+      }
+    },
   },
-  watch: {},
+  watch: {
+    email: function () {
+      this.errorMsg = [];
+    },
+    password: function () {
+      this.errorMsg = [];
+    },
+  },
+  validations: {
+    email: {
+      required,
+      email,
+    },
+    password: { required, minLength: minLength(6) },
+  },
 };
 </script>
 
@@ -94,8 +122,7 @@ body {
 }
 .login-form {
   position: relative;
-  padding-top: 20px;
-  padding-left: 40px;
+  padding: 20px 40px;
 }
 
 .login input {
@@ -121,9 +148,9 @@ label {
 }
 .error {
   display: block;
-  color: red;
   font-weight: bold;
   margin-top: 0px;
+  border-radius: 10px;
   text-align: center;
   font-size: 12px;
 }
@@ -150,5 +177,11 @@ button {
 }
 input:focus {
   outline: solid 3px #CAE4DB;
+}
+form p {
+  background-color: #D5BFBF;
+  height: 30px;
+  color: black;
+  padding: 10px;
 }
 </style>
