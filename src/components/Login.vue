@@ -2,7 +2,7 @@
   <div class="login">
     <h1>Login</h1>
     <form class="login-form">
-      <p v-if="isError" class="error">Error: {{ this.isError }}*</p>
+      <p v-if="isError" class="error">Error: {{ this.errorMsg }}*</p>
 
       <div class="email-input">
         <label for="Email"> Email</label>
@@ -12,6 +12,7 @@
           v-model="email"
           placeholder="Type your ID"
           required="true"
+          v-on:change="validate"
         />
       </div>
       <div class="password-input">
@@ -22,15 +23,11 @@
           v-model="password"
           placeholder="Type your Password"
           required="true"
+          @change="validate"
         />
       </div>
       <div class="login-button">
-        <button
-          :disabled="isDisabled"
-          id="Login_Button"
-          type="Submit"
-          @click="validate"
-        >
+        <button :disabled="isDisabled" id="Login_Button" type="Submit">
           Login
         </button>
       </div>
@@ -43,17 +40,35 @@ export default {
   data() {
     return {
       isError: false,
-      isDisabled: false,
+      isDisabled: true,
       email: "",
       password: "",
+      errorMsg: "",
     };
   },
   methods: {
     validate() {
+      console.log("triggered");
       if (this.email === "" || this.password === "") {
         this.isError = true;
-        this.isError = "Please fill all datas";
+        this.errorMsg = "Please fill all datas";
       }
+      var pattern = new RegExp(
+        /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$/
+      );
+      if (!pattern.test("!@#123asdf!@#") && this.email && this.password) {
+        this.isError = true;
+        this.errorMsg =
+          "Passwords should have a check for at least one uppercase letter, numbers and a special character";
+      }
+      if (!this.isError) this.isDisabled = false;
+    },
+    resetData() {
+      this.isError = false;
+      this.isDisabled = false;
+      this.email = "";
+      this.password = "";
+      this.errorMsg = "";
     },
   },
 };
