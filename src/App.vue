@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header>
+    <header v-if="this.$route.name == 'Home'">
       <nav>
         <span @click="logMessage"><router-link to="/">HOME</router-link></span>
         <div>
