@@ -52,7 +52,11 @@ nav {
 }
 header {
   margin-top: 0;
-  padding-bottom: 20px;
+  margin-bottom: 0;
+  padding-bottom: 0px;
+  z-index: 2;
+  width: 100vw;
+  position: fixed;
 }
 span {
   margin-left: 10px;

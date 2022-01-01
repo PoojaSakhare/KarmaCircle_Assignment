@@ -1,10 +1,39 @@
 <template>
-  <h1>hello</h1>
+  <div class="Home-container">
+    <SideBar />
+    <div class="content"><Content /></div>
+    <div class="right-menu">right menu</div>
+  </div>
 </template>
 
 <script>
+import SideBar from "./SideBar";
+import Content from "./Content";
+import axios from "axios";
 export default {
   name: "Home",
+  data() {
+    return {
+      posts: [],
+    };
+  },
+  components: {
+    SideBar,
+    Content,
+  },
+  created() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      axios
+        .get("https://tweets.free.beeceptor.com/tweets/all")
+        .then((response) => {
+          this.posts.push(response.data);
+        })
+        .catch((error) => console.log(error));
+    },
+  },
 };
 </script>
 
@@ -14,18 +43,33 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
-nav {
-  display: flex;
-  justify-content: space-between;
-  background-color: #00303F;
-  color: white;
-  padding: 20px;
-  margin-top: 0;
-}
 header {
   margin-top: 0;
 }
 span {
   margin-left: 10px;
+}
+.Home-container {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+  height: 100vh;
+}
+.right-menu {
+  width: 20%;
+  background-color: #CAE4DB;
+  margin-top: 61.5px;
+  padding: 10px;
+}
+.content {
+  margin-top: 61.5px;
+  background-color: #F5F4F4;
+  width: 100vw;
+  padding: 10px;
+}
+@media (min-device-width: 320px) and (max-device-width: 480px) {
+  .right-menu {
+    display: none;
+  }
 }
 </style>

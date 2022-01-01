@@ -1,37 +1,39 @@
 <template>
   <div class="login">
-    <h1>Login</h1>
-    <form class="login-form" @submit.prevent="submit">
-      <p v-if="this.errorMsg.length > 0" class="error">
-        ERROR!! {{ this.errorMsg[0] }}
-      </p>
+    <center>
+      <h1>Login</h1>
+      <form class="login-form" @submit.prevent="submit">
+        <p v-if="this.errorMsg.length > 0" class="error">
+          ERROR!! {{ this.errorMsg[0] }}
+        </p>
 
-      <div class="email-input">
-        <label for="Email"> Email</label>
-        <input
-          id="Email"
-          type="email"
-          v-model="email"
-          placeholder="Type your ID"
-          required="true"
-        />
-      </div>
-      <div class="password-input">
-        <label for="Password"> Password</label>
-        <input
-          id="Password"
-          type="password"
-          v-model="password"
-          placeholder="Type your Password"
-          required="true"
-        />
-      </div>
-      <div class="login-button">
-        <button id="Login_Button" type="Submit" @click="validate($event)">
-          Login
-        </button>
-      </div>
-    </form>
+        <div class="email-input">
+          <label for="Email"> Email</label>
+          <input
+            id="Email"
+            type="email"
+            v-model="email"
+            placeholder="Type your ID"
+            required="true"
+          />
+        </div>
+        <div class="password-input">
+          <label for="Password"> Password</label>
+          <input
+            id="Password"
+            type="password"
+            v-model="password"
+            placeholder="Type your Password"
+            required="true"
+          />
+        </div>
+        <div class="login-button">
+          <button id="Login_Button" type="Submit" @click="validate($event)">
+            Login
+          </button>
+        </div>
+      </form>
+    </center>
   </div>
 </template>
 
@@ -111,16 +113,20 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 }
 .login {
   background-color: #F5F4F4;
-  width: 500px;
+  width: 60vh;
   height: 500px;
-  position: absolute;
   top: 100px;
-  left: 35%;
+  margin: 10vh;
+  display: flex;
+  justify-content: center;
 }
 .login-form {
+  margin-top: 0px;
   padding: 20px 40px;
 }
 
