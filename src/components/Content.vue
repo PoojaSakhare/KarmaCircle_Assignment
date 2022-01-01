@@ -1,36 +1,43 @@
 <template>
-  <div class="wrapperr">
-    <div class="input-box">
-      <div class="tweet-area">
-        <span class="placeholder">What's happening?</span>
-        <div
-          class="input editable"
-          contenteditable="true"
-          spellcheck="false"
-        ></div>
-        <div
-          class="input readonly"
-          contenteditable="true"
-          spellcheck="false"
-        ></div>
+  <div class="container">
+    <div class="wrapperr">
+      <div class="input-box">
+        <div class="tweet-area">
+          <span class="placeholder">What's happening?</span>
+          <div
+            class="input editable"
+            contenteditable="true"
+            spellcheck="false"
+          ></div>
+          <div
+            class="input readonly"
+            contenteditable="true"
+            spellcheck="false"
+          ></div>
+        </div>
+        <div class="privacy">
+          <i class="fas fa-globe-asia"></i>
+          <span>Everyone can reply</span>
+        </div>
       </div>
-      <div class="privacy">
-        <i class="fas fa-globe-asia"></i>
-        <span>Everyone can reply</span>
+      <div class="bottom">
+        <ul class="icons">
+          <li><i class="uil uil-capture"></i></li>
+          <li><i class="far fa-file-image"></i></li>
+          <li><i class="fas fa-map-marker-alt"></i></li>
+          <li><i class="far fa-grin"></i></li>
+          <li><i class="far fa-user"></i></li>
+        </ul>
+        <a href="#" class="myButton">Tweet</a>
       </div>
     </div>
-    <div class="bottom">
-      <ul class="icons">
-        <li><i class="uil uil-capture"></i></li>
-        <li><i class="far fa-file-image"></i></li>
-        <li><i class="fas fa-map-marker-alt"></i></li>
-        <li><i class="far fa-grin"></i></li>
-        <li><i class="far fa-user"></i></li>
+    <div class="tweets-list">
+      <ul>
+        <li v-for="product in posts" :key="product._id">
+          {{ product.name }}
+        </li>
       </ul>
-      <div class="content">
-        <span class="counter">100</span>
-        <button>Tweet</button>
-      </div>
+      <button @click="logMessage"></button>
     </div>
   </div>
 </template>
@@ -38,7 +45,16 @@
 <script>
 export default {
   name: "content",
-  methods: {},
+  methods: {
+    logMessage() {
+      console.log("posts is ", this.posts);
+    },
+  },
+  props: {
+    posts: {
+      type: Object,
+    },
+  },
 };
 </script>
 
@@ -49,17 +65,17 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-::selection {
+/* ::selection {
   color: #fff;
   background: #1da1f2;
-}
+} */
 .wrapperr {
   background: #fff;
-  max-width: 475px;
   width: 100%;
   border-radius: 15px;
-  padding: 25px 25px 15px 25px;
+  padding: 15px 15px 15px 25px;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 .input-box {
   padding-top: 10px;
@@ -67,18 +83,20 @@ export default {
 }
 .input-box .tweet-area {
   position: relative;
-  min-height: 130px;
+  min-height: 10px;
   max-height: 170px;
   overflow-y: auto;
 }
+
 .tweet-area::-webkit-scrollbar {
   width: 0px;
 }
+
 .tweet-area .placeholder {
-  position: absolute;
   margin-top: -3px;
   font-size: 22px;
   color: #98A5B1;
+  opacity: 0.5;
   pointer-events: none;
 }
 .tweet-area .input {
@@ -91,6 +109,7 @@ export default {
 .tweet-area .editable {
   position: relative;
   z-index: 5;
+  padding-top: 20px;
 }
 .tweet-area .readonly {
   position: absolute;
@@ -127,7 +146,7 @@ export default {
 }
 .bottom {
   display: flex;
-  margin-top: 13px;
+  margin-top: 10px;
   align-items: center;
   justify-content: space-between;
 }
@@ -148,38 +167,28 @@ export default {
   border-radius: 50%;
   transition: background 0.2s ease;
 }
-.bottom .content {
+.bottom .content_ {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.bottom .counter {
-  color: #333;
-  display: none;
-  font-weight: 500;
-  margin-right: 15px;
-  padding-right: 15px;
-  border-right: 1px solid #aab8c2;
-}
-.bottom button {
-  padding: 9px 18px;
-  border: none;
-  outline: none;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: 700;
-  background: #1da1f2;
-  color: #fff;
+.myButton {
+  background-color: #1da1f2;
+  border-radius: 15px;
+  display: inline-block;
   cursor: pointer;
-  opacity: 0.5;
-  pointer-events: none;
-  transition: background 0.2s ease;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 5px 10px 10px 10px;
+  text-decoration: none;
+  max-height: 40px;
+  max-width: 100px;
 }
-.bottom button.active {
-  opacity: 1;
-  pointer-events: auto;
+.myButton:hover {
+  background-color: #117abb;
 }
-.bottom button:hover {
-  background: #0d8bd9;
+.myButton:active {
+  position: relative;
+  top: 1px;
 }
 </style>

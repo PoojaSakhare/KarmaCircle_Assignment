@@ -1,14 +1,15 @@
 <template>
   <div class="Home-container">
     <SideBar />
-    <div class="content"><Content /></div>
-    <div class="right-menu">right menu</div>
+    <div class="content"><Content :posts="this.posts" /></div>
+    <div class="right-menu"><RightMenu /></div>
   </div>
 </template>
 
 <script>
 import SideBar from "./SideBar";
 import Content from "./Content";
+import RightMenu from "./RightMenu";
 import axios from "axios";
 export default {
   name: "Home",
@@ -20,6 +21,7 @@ export default {
   components: {
     SideBar,
     Content,
+    RightMenu,
   },
   created() {
     this.getData();
@@ -30,6 +32,7 @@ export default {
         .get("https://tweets.free.beeceptor.com/tweets/all")
         .then((response) => {
           this.posts.push(response.data);
+          console.log("posts from home", this.posts);
         })
         .catch((error) => console.log(error));
     },
@@ -56,7 +59,7 @@ span {
   height: 100vh;
 }
 .right-menu {
-  width: 20%;
+  width: 40%;
   background-color: #CAE4DB;
   margin-top: 61.5px;
   padding: 10px;

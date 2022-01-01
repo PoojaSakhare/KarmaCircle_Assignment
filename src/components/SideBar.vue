@@ -44,7 +44,7 @@ body {
   top: 61.5px;
   left: 0;
   width: 15vh;
-  height: 100vh;
+  height: 91.5vh;
   padding: 10px 0;
   transition: all 0.5s ease;
 }
