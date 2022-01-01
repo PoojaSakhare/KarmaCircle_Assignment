@@ -35,7 +35,7 @@ export default {};
 </script>
 
 <style>
-img {
+.trending-content img {
   width: 200px;
   height: 200px;
   float: right;
@@ -47,6 +47,7 @@ p {
   text-align: left;
 }
 .trending-content {
+  overflow: hidden;
 }
 .image2 {
   width: 100px;

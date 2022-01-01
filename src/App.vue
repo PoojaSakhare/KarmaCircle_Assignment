@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <header v-if="this.$route.name == 'Home'">
+    <header v-if="this.$route.name !== 'Login'">
       <nav>
         <span @click="logMessage"><router-link to="/">HOME</router-link></span>
         <div>
-          <span> <router-link to="/">Profile</router-link> </span>
+          <span> <router-link to="/Profile">Profile</router-link> </span>
           <span> <router-link to="/Login">LOGOUT</router-link> </span>
         </div>
       </nav>

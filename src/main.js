@@ -4,6 +4,7 @@ import Vuelidate from "vuelidate";
 import vueRouter from "vue-router";
 import Home from "./components/Home.vue";
 import Login from "./components/Login.vue";
+import Profile from "./components/Profile.vue";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "@fortawesome/fontawesome-free/js/all.js";
 
@@ -13,7 +14,8 @@ Vue.config.productionTip = false;
 
 const routes = [
   { name: "Login", path: "/Login", component: Login },
-  { name: "Home", path: "/", component: Home }
+  { name: "Home", path: "/", component: Home },
+  { name: "Profile", path: "/Profile", component: Profile }
 ];
 
 const router = new vueRouter({

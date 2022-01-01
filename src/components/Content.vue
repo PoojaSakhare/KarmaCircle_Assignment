@@ -32,6 +32,11 @@
       </div>
     </div>
     <div class="tweets-list">
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
       <ul>
         <li v-for="product in posts" :key="product._id">
           {{ product.name }}
@@ -43,8 +48,12 @@
 </template>
 
 <script>
+import Card from "./Card";
 export default {
   name: "content",
+  components: {
+    Card,
+  },
   methods: {
     logMessage() {
       console.log("posts is ", this.posts);

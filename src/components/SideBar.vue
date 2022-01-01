@@ -4,16 +4,16 @@
     <div class="sidebar">
       <ul>
         <li>
-          <a href="#" class="active">
-            <span class="icon"><i class="fas fa-home"></i></span>
-            <span class="item">Home</span>
-          </a>
+          <router-link to="/"
+            ><span class="icon"><i class="fas fa-home"></i></span>
+            <span class="item">Home</span></router-link
+          >
         </li>
         <li>
-          <a href="#">
-            <span class="icon"><i class="fas fa-desktop"></i></span>
-            <span class="item">Profile</span>
-          </a>
+          <router-link to="/Profile"
+            ><span class="icon"><i class="fas fa-desktop"></i></span>
+            <span class="item">Profile</span></router-link
+          >
         </li>
       </ul>
     </div>
@@ -39,7 +39,7 @@ body {
   background: #f5f6fa;
 }
 .wrapper .sidebar {
-  background: #CDAC81;
+  background: rgba(0, 0, 0, 0.178);
   position: relative;
   top: 61.5px;
   left: 0;
@@ -47,6 +47,11 @@ body {
   height: 91.5vh;
   padding: 10px 0;
   transition: all 0.5s ease;
+  border: black;
+}
+.sidebar:hover {
+  min-width: 30vh;
+  transition: all 0.5s ease-in-out;
 }
 .wrapper .sidebar ul li a {
   display: block;
@@ -63,7 +68,7 @@ body {
 .wrapper .sidebar ul li a:hover,
 .wrapper .sidebar ul li a.active {
   color: #00303F;
-  background: #CAE4DB;
+  background: rgba(13, 14, 13, 0.055);
   border-right: 2px solid black;
 }
 .wrapper .sidebar ul li a:hover .icon,
