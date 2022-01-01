@@ -56,4 +56,7 @@ p {
   display: inline-block;
   border-radius: 100px;
 }
+.treding-container {
+  height: 100%;
+}
 </style>

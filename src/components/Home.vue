@@ -56,7 +56,7 @@ span {
   display: flex;
   justify-content: space-between;
   flex-flow: row;
-  height: 100vh;
+  height: 100%;
 }
 .right-menu {
   width: 40%;
@@ -73,6 +73,9 @@ span {
 @media (min-device-width: 320px) and (max-device-width: 480px) {
   .right-menu {
     display: none;
+  }
+  .content {
+    padding-right: 20px;
   }
 }
 </style>

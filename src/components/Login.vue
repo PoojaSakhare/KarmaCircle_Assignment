@@ -2,7 +2,7 @@
   <div class="login">
     <center>
       <h1>Login</h1>
-      <form class="login-form" @submit.prevent="submit">
+      <form class="login-form">
         <p v-if="this.errorMsg.length > 0" class="error">
           ERROR!! {{ this.errorMsg[0] }}
         </p>
@@ -50,7 +50,7 @@ export default {
     };
   },
   methods: {
-    validate(e) {
+    validate() {
       this.errorMsg = [];
       if (this.email === "" || this.password === "") {
         this.errorMsg.push("Please fill all datas");
@@ -73,7 +73,6 @@ export default {
         this.$router.push({ name: "Home" });
         this.resetData();
       }
-      e.preventDefault();
     },
     resetData() {
       this.email = "";

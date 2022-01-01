@@ -43,19 +43,16 @@ body {
   position: relative;
   top: 61.5px;
   left: 0;
-  width: 15vh;
-  height: 91.5vh;
+  width: 30vh;
+  height: 94.6%;
   padding: 10px 0;
   transition: all 0.5s ease;
-  border: black;
+  border-right: 10px solid rgba(0, 0, 0, 0.062);
 }
-.sidebar:hover {
-  min-width: 30vh;
-  transition: all 0.5s ease-in-out;
-}
+
 .wrapper .sidebar ul li a {
   display: block;
-  padding: 13px 30px;
+  padding: 13px 0px;
   color: black;
   font-size: 16px;
   position: relative;
@@ -64,6 +61,7 @@ body {
   color: black;
   width: 30px;
   display: inline-block;
+  transform: scale(1.8);
 }
 .wrapper .sidebar ul li a:hover,
 .wrapper .sidebar ul li a.active {

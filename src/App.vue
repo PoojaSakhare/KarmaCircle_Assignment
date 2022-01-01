@@ -55,7 +55,7 @@ header {
   margin-bottom: 0;
   padding-bottom: 0px;
   z-index: 2;
-  width: 100vw;
+  width: 100%;
   position: fixed;
 }
 span {
