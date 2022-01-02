@@ -3,10 +3,12 @@
     <div class="wrapperr">
       <div class="input-box">
         <div class="tweet-area">
-          <input
+          <textarea
+            maxlength="500"
+            type="text"
             v-model="tweetText"
             placeholder="What's happening?"
-            class="input editable"
+            class="input editable input"
             spellcheck="false"
           />
           <div
@@ -28,7 +30,7 @@
           <li><i class="far fa-grin"></i></li>
           <li><i class="far fa-user"></i></li>
         </ul>
-        <a href="#" class="myButton">Tweet</a>
+        <a href="#" class="myButton" @click="createTweet($event)">Tweet</a>
       </div>
     </div>
     <div class="tweets-list">
@@ -59,6 +61,7 @@ export default {
   name: "content",
   data() {
     return {
+      tweetText: "",
       posts: [
         {
           id: 1,
@@ -157,6 +160,38 @@ export default {
         console("element is: ", this.post[i]);
       }
     },
+    createTweet(e) {
+      //Hey ya! Great to see you here. Btw, nothing is configured for this request path.
+      // Create a rule and start building a mock API.
+      // axios
+      //   .post("https://tweets.free.beeceptor.com/tweets/all", {
+      //     userName: "Fred Sakhare",
+      //     tweet: "It's a great day dude!",
+      //     date: new Date(),
+      //   })
+      //   .then(function (response) {
+      //     console.log("put request", response);
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error);
+      //   });
+      if (this.tweetText) {
+        let id = Math.floor((1 + Math.random()) * 0x10000)
+          .toString(16)
+          .substring(1);
+
+        var newTweet = {
+          userName: "Jolie Ferne",
+          tweet: this.tweetText,
+          date: new Date().toISOString().split("T")[0],
+          id: id,
+        };
+        this.posts.push(newTweet);
+        console.log(this.posts);
+        this.tweetText = "";
+      }
+      e.preventDefault();
+    },
   },
   // props: {
   //   posts: {
@@ -200,19 +235,22 @@ export default {
   width: 0px;
 }
 
-.tweet-area .placeholder {
+.tweet-area ::placeholder {
   margin-top: -3px;
   font-size: 22px;
   color: #98A5B1;
   opacity: 0.5;
   pointer-events: none;
 }
-.tweet-area .input {
+textarea {
   outline: none;
+  border: none;
   font-size: 17px;
-  min-height: inherit;
+  height: 80px;
+  width: 600px;
+  overflow: auto;
+  min-height: 60px;
   word-wrap: break-word;
-  word-break: break-all;
 }
 .tweet-area .editable {
   position: relative;

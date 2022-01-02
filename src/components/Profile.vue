@@ -1,7 +1,8 @@
 <template>
   <div class="Home-container">
     <SideBar />
-    <din class="profile-content">
+    <div class="profile-content">
+      <h4 @click="getProfile">get profile</h4>
       <div>
         <img
           src="https://th.bing.com/th/id/OIP.AdoJAsiWdwMNG0ZTvUoTUQHaHa?w=161&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7"
@@ -10,8 +11,10 @@
         />
       </div>
 
-      <h1 class="user_name">Pooja Sakhare</h1>
-    </din>
+      <h1 class="user_name">
+        {{ this.profile.first_name }} {{ this.profile.first_name }}
+      </h1>
+    </div>
     <div class="right-menu"><RightMenu /></div>
   </div>
 </template>
@@ -24,7 +27,7 @@ export default {
   name: "Home",
   data() {
     return {
-      posts: [],
+      profile: {},
     };
   },
   components: {
@@ -32,15 +35,15 @@ export default {
     RightMenu,
   },
   created() {
-    this.getData();
+    // this.getProfile();
   },
   methods: {
-    getData() {
+    getProfile() {
       axios
-        .get("https://tweets.free.beeceptor.com/tweets/all")
+        .get("https://tweets.free.beeceptor.com/profile")
         .then((response) => {
-          this.posts.push(response.data);
-          console.log("posts from home", this.posts);
+          this.profile = response.data;
+          console.log("profile from profile", this.profile);
         })
         .catch((error) => console.log(error));
     },
