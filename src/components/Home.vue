@@ -15,7 +15,7 @@ export default {
   name: "Home",
   data() {
     return {
-      posts: [],
+      posts: {},
     };
   },
   components: {
@@ -27,15 +27,15 @@ export default {
     this.getData();
   },
   methods: {
-    getData() {
-      axios
-        .get("https://tweets.free.beeceptor.com/tweets/all")
-        .then((response) => {
-          this.posts.push(response.data);
-          console.log("posts from home", this.posts);
-        })
-        .catch((error) => console.log(error));
-    },
+    // getData() {
+    //   axios
+    //     .get("https://tweets.free.beeceptor.com/tweets/all")
+    //     .then((response) => {
+    //       this.posts = response.data;
+    //       console.log("posts from home", this.posts);
+    //     })
+    //     .catch((error) => console.log(error));
+    // },
   },
 };
 </script>

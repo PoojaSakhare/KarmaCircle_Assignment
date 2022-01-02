@@ -5,15 +5,10 @@
         src="https://th.bing.com/th/id/OIP.0oAaZ9FyGxTXXYSBSlXziQHaHa?w=161&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7"
         alt=""
       />
-      <h3 class="user-name">Pooja Sakhare</h3>
+      <h3 class="user-name">cgfhffbhgf</h3>
     </div>
     <div class="card-tweet">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-        excepturi suscipit molestias quibusdam eum reiciendis nisi dicta numquam
-        iure dignissimos itaque labore doloremque sed amet sapiente nemo,
-        laudantium vero explicabo?
-      </p>
+      <p>sfgfhfygbn</p>
     </div>
   </div>
 </template>
@@ -21,6 +16,22 @@
 <script>
 export default {
   name: "Card",
+  // props: {
+  //   tweet: {
+  //     type: String,
+  //   },
+  //   userName: {
+  //     type: String,
+  //   },
+  // },
+  created() {
+    this.logmessage();
+  },
+  methods: {
+    logmessage() {
+      console.log("from Card", this.tweet, this.userName);
+    },
+  },
 };
 </script>
 
