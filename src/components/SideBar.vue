@@ -4,7 +4,7 @@
     <div class="sidebar">
       <ul>
         <li>
-          <router-link to="/"
+          <router-link to="/Home"
             ><span class="icon"><i class="fas fa-home"></i></span>
             <span class="item">Home</span></router-link
           >
@@ -38,14 +38,15 @@ export default {};
 body {
   background: #f5f6fa;
 }
+
 .wrapper .sidebar {
   background: rgba(0, 0, 0, 0.178);
   position: relative;
-  top: 61.5px;
   left: 0;
-  width: 30vh;
-  height: 94.6%;
-  padding: 10px 0;
+  width: 100%;
+  height: 100%;
+  padding: 10px 0px;
+  margin-right: 10px;
   transition: all 0.5s ease;
   border-right: 10px solid rgba(0, 0, 0, 0.062);
 }
@@ -62,6 +63,9 @@ body {
   width: 30px;
   display: inline-block;
   transform: scale(1.8);
+}
+.wrapper .sidebar ul {
+  margin-top: 60px;
 }
 .wrapper .sidebar ul li a:hover,
 .wrapper .sidebar ul li a.active {

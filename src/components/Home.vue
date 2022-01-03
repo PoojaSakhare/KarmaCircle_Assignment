@@ -10,7 +10,7 @@
 import SideBar from "./SideBar";
 import Content from "./Content";
 import RightMenu from "./RightMenu";
-import axios from "axios";
+// import axios from "axios";
 export default {
   name: "Home",
   data() {
@@ -69,6 +69,7 @@ span {
   background-color: #F5F4F4;
   width: 100%;
   padding: 10px;
+  display: inline-block;
 }
 @media (min-device-width: 320px) and (max-device-width: 480px) {
   .right-menu {

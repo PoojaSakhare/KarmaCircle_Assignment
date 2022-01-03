@@ -121,7 +121,7 @@ body {
   height: 500px;
   top: 100px;
   margin: 10vh;
-  display: flex;
+  display: inline-block;
   justify-content: center;
 }
 .login-form {

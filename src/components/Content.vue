@@ -24,7 +24,6 @@
       </div>
       <div class="bottom">
         <ul class="icons">
-          <li><i class="uil uil-capture"></i></li>
           <li><i class="far fa-file-image"></i></li>
           <li><i class="fas fa-map-marker-alt"></i></li>
           <li><i class="far fa-grin"></i></li>
@@ -67,7 +66,7 @@ export default {
   },
   components: {},
   created() {
-    // this.getData();
+    this.getData();
   },
   methods: {
     logMessage() {
@@ -136,11 +135,12 @@ export default {
 } */
 .wrapperr {
   background: #fff;
-  width: 100%;
+  width: 80%;
   border-radius: 15px;
   padding: 15px 15px 15px 25px;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
+  display: inline-block;
 }
 .input-box {
   padding-top: 10px;
@@ -258,6 +258,17 @@ textarea {
 .myButton:active {
   position: relative;
   top: 1px;
+}
+@media (min-device-width: 320px) and (max-device-width: 480px) {
+  .icons,
+  .myButton {
+    transform: scale(0.7);
+    margin: 0px;
+  }
+  .icons li {
+    width: 80%;
+    margin-left: 10px;
+  }
 }
 
 .card-user img {

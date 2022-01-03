@@ -2,10 +2,12 @@
   <div id="app">
     <header v-if="this.$route.name !== 'Login'">
       <nav>
-        <span @click="logMessage"><router-link to="/">HOME</router-link></span>
+        <span @click="logMessage"
+          ><router-link to="/Home">HOME</router-link></span
+        >
         <div>
           <span> <router-link to="/Profile">Profile</router-link> </span>
-          <span> <router-link to="/Login">LOGOUT</router-link> </span>
+          <span> <router-link to="/">LOGOUT</router-link> </span>
         </div>
       </nav>
     </header>
@@ -14,13 +16,9 @@
 </template>
 
 <script>
-import Login from "./components/Login";
-
 export default {
   name: "App",
-  components: {
-    Login,
-  },
+  components: {},
   methods: {
     logMessage() {
       console.log(this.$route.name);
@@ -36,6 +34,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  width: 100%;
 }
 body {
   padding: 0;
