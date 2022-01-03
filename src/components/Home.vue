@@ -24,7 +24,7 @@ export default {
     RightMenu,
   },
   created() {
-    this.getData();
+    // this.getData();
   },
   methods: {
     // getData() {
@@ -67,7 +67,7 @@ span {
 .content {
   margin-top: 61.5px;
   background-color: #F5F4F4;
-  width: 100vw;
+  width: 100%;
   padding: 10px;
 }
 @media (min-device-width: 320px) and (max-device-width: 480px) {
